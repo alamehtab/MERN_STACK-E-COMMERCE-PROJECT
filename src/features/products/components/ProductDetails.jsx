@@ -38,8 +38,6 @@ function ProductDetails() {
     const navigate = useNavigate()
 
     const handleCart = (e) => {
-        e.preventDefault()
-        e.stopPropagation()
         console.log('adding to cart');
         dispatch(addToCartAsync({ ...product, quantity: 1, user: user.id }))
     }
@@ -49,16 +47,17 @@ function ProductDetails() {
     }, [dispatch, params.id])
 
     useEffect(() => {
-        window.addEventListener('beforeunload', () => {
-            console.log('🛑 Page is reloading');
-        });
+        console.log('🟢 ProductDetails mounted');
+        return () => {
+            console.log('🔴 ProductDetails unmounted');
+        };
     }, []);
     console.log('🔁 Component rendered');
 
 
 
     return (
-        
+
         <div className="bg-white">
             {product && (<div className="pt-6">
                 <nav aria-label="Breadcrumb">
