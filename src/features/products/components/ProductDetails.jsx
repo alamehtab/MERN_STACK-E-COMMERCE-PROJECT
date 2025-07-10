@@ -37,24 +37,15 @@ function ProductDetails() {
     const params = useParams()
     const navigate = useNavigate()
 
-    const handleCart = (e) => {
-        console.log('adding to cart');
-        dispatch(addToCartAsync({ ...product, quantity: 1, user: user.id }))
-    }
 
     useEffect(() => {
         dispatch(fetchProductDetailsByIdAsync(params.id))
     }, [dispatch, params.id])
 
-    useEffect(() => {
-        console.log('🟢 ProductDetails mounted');
-        return () => {
-            console.log('🔴 ProductDetails unmounted');
-        };
-    }, []);
-    console.log('🔁 Component rendered');
-
-
+    const handleCart=(e)=>{
+        e.preventDefault()
+        dispatch(addToCartAsync({...product,quantity:1,user:user.id}))
+    }
 
     return (
 
@@ -227,7 +218,7 @@ function ProductDetails() {
                                 </fieldset>
                                 <button
                                     type='button'
-                                    onClick={(e) => handleCart(e)}
+                                    onClick={handleCart}
                                     className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-hidden"
                                 >
                                     Add to Cart

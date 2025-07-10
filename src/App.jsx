@@ -9,7 +9,7 @@ import {  Route, Routes } from 'react-router-dom'
 import CheckoutFormPage from './features/pages/CheckoutFormPage'
 import CartPage from './features/pages/CartPage'
 import ProductDetailsPage from './features/pages/ProductDetailsPage'
-import Protected from './features/auth/components/Protected'
+import Protected from './features/auth/components/Protected'       
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,9 +23,13 @@ function App() {
         <Routes>
           <Route path='/' element={<LoginPage />}></Route>
           <Route path='/signup' element={<SignupPage />}></Route>
+          {/* <Route path='/home' element={<Home />}></Route> */}
           <Route path='/home' element={<Protected><Home /></Protected>}></Route>
+          {/* <Route path='/cart' element={<CartPage />}></Route> */}
           <Route path='/cart' element={<Protected><CartPage /></Protected>}></Route>
+          {/* <Route path='/checkout' element={<CheckoutFormPage />}></Route> */}
           <Route path='/checkout' element={<Protected><CheckoutFormPage /></Protected>}></Route>
+          {/* <Route path='/productdetails/:id' element={<ProductDetailsPage />}></Route> */}
           <Route path='/productdetails/:id' element={<Protected><ProductDetailsPage /></Protected>}></Route>
         </Routes>
     </>
