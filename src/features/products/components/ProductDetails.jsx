@@ -53,7 +53,7 @@ function ProductDetails() {
         };
     }, []);
     console.log('🔁 Component rendered');
-
+    console.log('hello world!');
 
 
     return (
