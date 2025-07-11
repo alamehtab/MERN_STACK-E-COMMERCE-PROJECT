@@ -42,6 +42,7 @@ export const usersSlice=createSlice({
         })
         .addCase(checkUserAsync.fulfilled,(state,action)=>{
             state.status='idle',
+            console.log("Fetched Cart Items: ", action.payload);
             state.users=action.payload
         })
         .addCase(checkUserAsync.rejected,(state,action)=>{

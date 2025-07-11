@@ -2,6 +2,8 @@ import React from 'react'
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, ShoppingCartIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { selectItems } from '../cart/cartSlice'
 
 const user = {
     name: 'Tom Cook',
@@ -27,6 +29,7 @@ function classNames(...classes) {
 }
 
 function Navbar({ children }) {
+    const items=useSelector(selectItems)
     return (
         <div>
             {/* min-h-100 */}
@@ -74,7 +77,7 @@ function Navbar({ children }) {
                                         </button>
                                     </Link>
                                     <span className="inline-flex items-center rounded-md mb-8 -ml-2 bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-gray-500/10 ring-inset">
-                                        3
+                                        {items.length}
                                     </span>
 
                                     {/* Profile dropdown */}
@@ -152,7 +155,7 @@ function Navbar({ children }) {
                                     </button>
                                 </Link>
                                 <span className="inline-flex items-center rounded-md mb-8 -ml-2 bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-gray-500/10 ring-inset">
-                                    3
+                                    {items.length}
                                 </span>
                             </div>
                             <div className="mt-3 space-y-1 px-2">
