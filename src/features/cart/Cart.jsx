@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectUsers } from '../auth/authSlice'
 import { deleteCartItemsAsync, fetchCartItemsAsync, selectItems, updateCartItemsAsync } from './cartSlice'
@@ -30,10 +30,11 @@ function Cart() {
     }, [dispatch, user])
     return (
         <>
+        {!items.length && <Navigate to='/' replace={true}></Navigate>}
             <h2 className='text-3xl mb-10 text-center underline'>My Cart</h2>
             <div className="mx-auto m-5 max-w-7xl p-8 sm:px-6 lg:px-8 bg-white">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="flow-root">
+                    <div className="flow-root ">
                         <ul role="list" className="-my-6 divide-y divide-gray-200">
                             {items.map((product) => (
                                 <li key={product.id} className="flex py-6">
@@ -93,7 +94,7 @@ function Cart() {
                             Checkout
                         </Link>
                     </div>
-                    <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
+                    <div className="mt-6  flex justify-center text-center text-sm text-gray-500">
                         <p>
                             or{' '}
                             <Link to='/home'>

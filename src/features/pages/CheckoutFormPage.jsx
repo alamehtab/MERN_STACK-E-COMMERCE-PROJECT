@@ -1,9 +1,12 @@
 import React from 'react'
 import CheckoutForm from '../checkoutForm/CheckoutForm'
+import Navbar from '../navbar/navbar'
 
 function CheckoutFormPage() {
   return (
-    <CheckoutForm/>
+    <Navbar>
+      <CheckoutForm></CheckoutForm>
+    </Navbar>
   )
 }
 

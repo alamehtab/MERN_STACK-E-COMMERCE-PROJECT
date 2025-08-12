@@ -32,7 +32,7 @@ function Signup() {
 
                 <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                     <form noValidate onSubmit={handleSubmit((data) => {
-                        dispatch(createUserAsync({ email: data.email, password: data.password }))
+                        dispatch(createUserAsync({ email: data.email, password: data.password ,address:[]}))
                         console.log(data);
                     })} className="space-y-6">
                         <div>
